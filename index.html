@@ -1,14 +1,15 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Decoy Exchange</title>
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
       background-color: #0d0d0d;
-      color: #ff9900;
+      color: #ffa500;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
     header {
       background-color: #1a1a1a;
@@ -16,70 +17,86 @@
       text-align: center;
     }
     header img {
-      height: 100px;
+      max-height: 100px;
     }
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+    .container {
+      padding: 20px;
     }
-    h1, h2 {
-      color: #ff9900;
+    h1, h2, p {
+      margin: 10px 0;
     }
-    p {
-      line-height: 1.6;
+    .contact {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
     }
-    .contact-icons a {
-      margin: 0 10px;
-      display: inline-block;
+    .contact a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #ffa500;
+      color: black;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
     }
-    .contact-icons img {
-      width: 32px;
-      height: 32px;
-      vertical-align: middle;
+    .contact a:hover {
+      background-color: #cc8400;
     }
-    .contact-section {
-      text-align: center;
+    .contact img {
+      height: 20px;
+      width: 20px;
+    }
+    .section {
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Decoy Exchange Logo">
-  </header>  <section>
+    <img src="logo.png" alt="Decoy Exchange Logo" />
+  </header>
+  <div class="container">
     <h1>Welcome to Decoy Exchange</h1>
-    <p>
-      We offer expert assistance in account registration, international transfers, P2P transaction guidance, crypto exchange usage, and scam protection. With our experience in consulting and client support, we help clients navigate financial platforms securely and efficiently.
-    </p>
-  </section>  <section>
-    <h2>Why Choose Us</h2>
-    <ul>
-      <li>✅ Trusted by clients across Europe</li>
-      <li>🔒 We prioritize security and privacy</li>
-      <li>🚀 Fast and efficient consultations</li>
-    </ul>
-  </section>  <section>
-    <h2>Our Services</h2>
-    <ul>
-      <li>📄 Assistance with documentation and forms</li>
-      <li>🌍 International bank transfers support</li>
-      <li>📈 Crypto exchange onboarding and training</li>
-      <li>🛡️ Scam awareness and safety guidelines</li>
-    </ul>
-  </section>  <section class="contact-section">
-    <h2>Contact Us</h2>
-    <p>Reach out through any of the platforms below:</p>
-    <div class="contact-icons">
-      <a href="https://t.me/decoy_exchange" target="_blank">
-        <img src="telegram.svg" alt="Telegram">
-      </a>
-      <a href="https://instagram.com/evgeshamoruk" target="_blank">
-        <img src="instagram.svg" alt="Instagram">
-      </a>
-      <a href="mailto:decoy1997@gmail.com">
-        <img src="email.svg" alt="Email">
-      </a>
-    </div>
-  </section>
+    <p>Consulting services in crypto exchanges, account registration, anti-scam protection and more.</p><div class="section">
+  <h2>Our Services</h2>
+  <ul>
+    <li>Exchange consultation and P2P guidance</li>
+    <li>Help with account verification on major crypto platforms</li>
+    <li>Protecting users from online scams and fraud</li>
+    <li>Document and contract support</li>
+    <li>Financial and payment structure advising</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Why Choose Us?</h2>
+  <ul>
+    <li>Reliable and fast support</li>
+    <li>Deep knowledge of international platforms</li>
+    <li>Custom-tailored solutions for your needs</li>
+    <li>Transparent and secure collaboration</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Contact Us</h2>
+  <div class="contact">
+    <a href="https://t.me/decoy_exchange" target="_blank">
+      <img src="telegram.svg" alt="Telegram" /> Telegram
+    </a>
+    <a href="https://instagram.com/evgeshamoruk" target="_blank">
+      <img src="instagram.svg" alt="Instagram" /> Instagram
+    </a>
+    <a href="mailto:decoy1997@gmail.com">
+      <img src="email.svg" alt="Email" /> Email
+    </a>
+  </div>
+</div>
+
+  </div>
 </body>
 </html>
