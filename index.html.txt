@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yevhenii Manchuk — Digital Consultant</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+    header {
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: #1a1a1a;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li::before {
+      content: '✔';
+      margin-right: 10px;
+      color: #2ecc71;
+    }
+    footer {
+      background: #1a1a1a;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Yevhenii Manchuk</h1>
+    <p>Freelance Consultant • Account Registration • Crypto Guidance • Scam Protection</p>
+  </header>  <div class="container">
+    <div class="section">
+      <h2>Services Offered</h2>
+      <ul>
+        <li>Consulting for international money transfers</li>
+        <li>Assistance with cryptocurrency exchange platforms</li>
+        <li>Advice on avoiding scams and fraud online</li>
+        <li>Help registering and verifying accounts (crypto, fintech, payment systems)</li>
+        <li>Support with freelance invoicing and compliance</li>
+      </ul>
+    </div><div class="section">
+  <h2>Why Work With Me?</h2>
+  <ul>
+    <li>Personalized 1-on-1 support</li>
+    <li>Experience across multiple fintech and crypto platforms</li>
+    <li>Transparent communication</li>
+    <li>Flexible and secure payment options</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:decoy1997@gmail.com">decoy1997@gmail.com</a></p>
+  <p>Telegram: <a href="https://t.me/decoy1997">@decoy1997</a></p>
+</div>
+
+  </div>  <footer>
+    &copy; 2025 Yevhenii Manchuk. All rights reserved.
+  </footer>
+</body>
+</html>
