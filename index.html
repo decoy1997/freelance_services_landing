@@ -572,8 +572,7 @@
         navContacts: "Контакты",
         welcomeHeading: "Экспертные консультации для ФОП в сфере IT и цифровых услуг",
         welcomeSubtitle: "Ваш надежный партнер для успешного ведения бизнеса и работы с криптовалютами в Украине",
-        welcomeText: "Предлагаем комплексные консультационные услуги для физических лиц-предпринимателей (ФОП) в Украине, специализируясь на вопросах информатизации (КВЭД 62.02), предоставлении информационных услуг (КВЭД 63.99, 63.11) и уникальных индивидуальных консультациях, в том числе по криптовалютам (КВЭД 96.09).
-          Мы поможем вам разобраться в сложных вопросах и выбрать оптимальный путь для вашего бизнеса.",
+        welcomeText: "Предлагаем комплексные консультационные услуги для физических лиц-предпринимателей (ФОП) в Украине, специализируясь на вопросах информатизации (КВЭД 62.02), предоставлении информационных услуг (КВЭД 63.99, 63.11) и уникальных индивидуальных консультациях, в том числе по криптовалютам (КВЭД 96.09). Мы поможем вам разобраться в сложных вопросах и выбрать оптимальный путь для вашего бизнеса.",
         welcomeCta: "Оставить заявку на консультацию",
         servicesHeading: "Наши Услуги",
         kved6202Title: "Консультации по информатизации (КВЭД 62.02)",
@@ -613,7 +612,7 @@
         fopExpertiseDesc: "Глубокое понимание особенностей ведения бизнеса как ФОП в Украине и всех нюансов законодательства.",
         individualApproachTitle: "Индивидуальный подход",
         individualApproachDesc: "Разработка решений, адаптированных под уникальные потребности и цели каждого клиента.",
-      confidentialityTitle: "Строгая конфиденциальность",
+        confidentialityTitle: "Строгая конфиденциальность",
         confidentialityDesc: "Гарантия полной конфиденциальности всех данных и обращений.",
         upToDateInfoTitle: "Актуальность информации",
         upToDateInfoDesc: "Предоставление самой свежей и релевантной информации, особенно в быстро меняющемся мире IT и криптовалют.",
@@ -657,7 +656,7 @@
         kved6202Title: "Консультації з питань інформатизації (КВЕД 62.02)",
         itInfraTitle: "Оптимізація IT-інфраструктури для ФОП",
         itInfraDesc: "Допомога у виборі та налаштуванні програмного забезпечення, хмарних рішень, систем комунікації для ефективного ведення підприємницької діяльності.",
-          digitalToolsTitle: "Впровадження цифрових інструментів",
+        digitalToolsTitle: "Впровадження цифрових інструментів",
         digitalToolsDesc: "Консультації щодо використання CRM-систем, таск-трекерів, онлайн-бухгалтерії та інших сервісів для автоматизації бізнес-процесів.",
         trainingSupportTitle: "Навчання та підтримка",
         trainingSupportDesc: "Допомога в освоєнні нових програмних продуктів та технологій, необхідних для вашої роботи.",
@@ -697,7 +696,7 @@
         upToDateInfoDesc: "Надання найсвіжішої та найбільш релевантної інформації, особливо у швидкозмінному світі IT та криптовалют.",
         comprehensiveServiceTitle: "Комплексний сервіс",
         comprehensiveServiceDesc: "Здатність охопити широкий спектр питань: від реєстрації ФОП до специфічних ніш, пов'язаних з криптовалютами.",
-          faqHeading: "Часті питання (FAQ)",
+        faqHeading: "Часті питання (FAQ)",
         faqQ1: "Які документи потрібні для реєстрації ФОП із зазначеними КВЕДами?",
         faqA1: "Для реєстрації ФОП зазвичай потрібен паспорт, ІПН (ідентифікаційний код) та заява на реєстрацію. Наші консультанти допоможуть вам правильно заповнити документи та обрати необхідні КВЕДи.",
         faqQ2: "Які податки сплачує ФОП за цими КВЕДами?",
@@ -725,17 +724,36 @@
 
     // Функция для изменения языка
     function changeLanguage(lang) {
+      console.log('Changing language to:', lang); // Для отладки
+
       // Сохраняем выбранный язык в localStorage
       localStorage.setItem('selectedLanguage', lang);
       
       // Обновляем атрибут lang у html
       document.documentElement.lang = lang;
 
+      // Удаляем класс 'active' со всех кнопок языка
+      document.querySelectorAll('.language-buttons button').forEach(button => {
+        button.classList.remove('active');
+      });
+      // Добавляем класс 'active' к выбранной кнопке
+      const activeButton = document.querySelector(`.language-buttons button[data-lang="${lang}"]`);
+      if (activeButton) {
+        activeButton.classList.add('active');
+      }
+
       // Применяем переводы
       for (const key in translations[lang]) {
-        const element = document.querySelector([data-key="${key}"]);
+        const element = document.querySelector(`[data-key="${key}"]`);
         if (element) {
-          element.innerHTML = translations[lang][key];
+          // Если элемент является ссылкой навигации, меняем textContent, чтобы не затронуть href
+          if (element.tagName === 'A' && element.closest('nav')) {
+            element.textContent = translations[lang][key];
+          } else {
+            element.innerHTML = translations[lang][key];
+          }
+        } else {
+          console.warn(`Element with data-key="${key}" not found for language ${lang}`);
         }
       }
     }
@@ -743,14 +761,8 @@
     // При загрузке страницы устанавливаем язык из localStorage или по умолчанию (русский)
     document.addEventListener('DOMContentLoaded', () => {
       const savedLang = localStorage.getItem('selectedLanguage') || 'ru'; // По умолчанию русский
-      const langSelector = document.querySelector('.language-selector select');
       
-      // Устанавливаем выбранное значение в селекторе
-      if (langSelector) {
-        langSelector.value = savedLang;
-      }
-      
-      // Применяем язык
+      // Применяем язык при загрузке
       changeLanguage(savedLang);
     });
   </script>
