@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,16 +84,158 @@
     .language-selector {
       margin-top: 10px;
     }
+
+    /* --- Стили для новых секций и элементов --- */
+    .welcome-section .subtitle {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .service-category {
+      margin-top: 40px;
+      text-align: left;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .service-category h3 {
+      color: #ff6600;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .service-list li {
+      margin-bottom: 20px;
+      border-bottom: 1px dashed #eee;
+      padding-bottom: 15px;
+    }
+    .service-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .service-list h4 {
+      margin-top: 0;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    .service-list p {
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .benefits-section {
+      background-color: #f2f2f2;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .benefit-item {
+      background-color: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+    .benefit-item h3 {
+      color: #ff6600;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .faq-section {
+      background-color: #fff;
+    }
+    .faq-items {
+      max-width: 800px;
+      margin: 30px auto 0;
+      text-align: left;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .faq-question {
+      background-color: #f9f9f9;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #333;
+      position: relative;
+      user-select: none; /* Prevents text selection on double-click */
+    }
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+    }
+    .faq-item[open] .faq-question::after {
+      content: '-';
+      transform: translateY(-50%) rotate(180deg);
+    }
+    .faq-answer {
+      padding: 15px 20px;
+      background-color: white;
+      border-top: 1px solid #eee;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .testimonials-section {
+      background-color: #f9f9f9;
+    }
+    .testimonial-cards-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      text-align: left;
+    }
+    .testimonial-card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    .testimonial-card cite {
+      display: block;
+      text-align: right;
+      font-weight: bold;
+      color: #ff6600;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-grid, .testimonial-cards-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Freelance Services</h1>
+    <h1 data-key="headerTitle">Freelance Services</h1>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#form">Request Form</a>
-      <a href="#contacts">Contacts</a>
+      <a href="#home" data-key="navHome">Home</a>
+      <a href="#services" data-key="navServices">Services</a>
+      <a href="#form" data-key="navRequestForm">Request Form</a>
+      <a href="#contacts" data-key="navContacts">Contacts</a>
     </nav>
     <div class="language-selector">
       <select onchange="changeLanguage(this.value)">
@@ -101,43 +244,487 @@
         <option value="uk">Українська</option>
       </select>
     </div>
-  </header>  <section id="home" class="section">
-    <h2>Welcome to our freelance consulting</h2>
-    <p>Professional help with crypto platforms, transfers, accounts, and anti-fraud strategies.</p>
-  </section>  <section id="services" class="section">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Account registration & verification</li>
-      <li>Crypto exchange & P2P consulting</li>
-      <li>Fraud protection guidance</li>
-      <li>Document assistance</li>
-      <li>Individual consulting sessions</li>
-    </ul>
-  </section>  <section id="form" class="section">
-    <h2>Submit a Request</h2>
+  </header>
+
+  <section id="home" class="section welcome-section">
+    <div class="container">
+        <h2 data-key="welcomeHeading">Экспертные консультации для ФОП в сфере IT и цифровых услуг</h2>
+        <p class="subtitle" data-key="welcomeSubtitle">Ваш надежный партнер для успешного ведения бизнеса и работы с криптовалютами в Украине</p>
+        <p data-key="welcomeText">
+            Предлагаем комплексные консультационные услуги для физических лиц-предпринимателей (ФОП) в Украине, 
+            специализируясь на вопросах информатизации (КВЭД 62.02), предоставлении информационных услуг 
+            (КВЭД 63.99, 63.11) и уникальных индивидуальных консультациях, в том числе по криптовалютам 
+            (КВЭД 96.09). Мы поможем вам разобраться в сложных вопросах и выбрать оптимальный путь для вашего бизнеса.
+        </p>
+        <a href="#form" class="btn" data-key="welcomeCta">Оставить заявку на консультацию</a>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container">
+        <h2 data-key="servicesHeading">Наши Услуги</h2>
+
+        <div class="service-category">
+            <h3 data-key="kved6202Title">Консультации по информатизации (КВЭД 62.02)</h3>
+            <ul class="service-list">
+                <li>
+                    <h4 data-key="itInfraTitle">Оптимизация IT-инфраструктуры для ФОП</h4>
+                    <p data-key="itInfraDesc">Помощь в выборе и настройке программного обеспечения, облачных решений, систем коммуникации для эффективного ведения предпринимательской деятельности.</p>
+                </li>
+                <li>
+                    <h4 data-key="digitalToolsTitle">Внедрение цифровых инструментов</h4>
+                    <p data-key="digitalToolsDesc">Консультации по использованию CRM-систем, таск-трекеров, бухгалтерии онлайн и других сервисов для автоматизации бизнес-процессов.</p>
+                    </li>
+                <li>
+                    <h4 data-key="trainingSupportTitle">Обучение и поддержка</h4>
+                    <p data-key="trainingSupportDesc">Помощь в освоении новых программных продуктов и технологий, необходимых для вашей работы.</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="service-category">
+            <h3 data-key="kved6399Title">Информационные и аналитические услуги (КВЭД 63.99)</h3>
+            <ul class="service-list">
+                <li>
+                    <h4 data-key="infoAnalysisTitle">Поиск и анализ специализированной информации</h4>
+                    <p data-key="infoAnalysisDesc">Предоставление актуальных данных по запросу клиента: рыночные данные, юридические аспекты, тренды в вашей нише.</p>
+                </li>
+                <li>
+                    <h4 data-key="mediaMonitoringTitle">Мониторинг новостей и медиа</h4>
+                    <p data-key="mediaMonitoringDesc">Отслеживание актуальных изменений в законодательстве, финансовых рынках и специфических отраслях, важных для вашего ФОП.</p>
+                </li>
+                <li>
+                    <h4 data-key="legalConsultTitle">Общие консультации по законодательству</h4>
+                    <p data-key="legalConsultDesc">Информационная поддержка по правовым и налоговым вопросам, касающимся IT-сферы и деятельности ФОП в Украине.</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="service-category">
+            <h3 data-key="kved6311Title">Услуги по обработке данных и веб-хостингу (КВЭД 63.11)</h3>
+            <ul class="service-list">
+                <li>
+                    <h4 data-key="hostingConsultTitle">Консультации по хостингу и облачным решениям</h4>
+                    <p data-key="hostingConsultDesc">Помощь в выборе надежных хостинг-провайдеров, настройке серверов, использовании облачных хранилищ данных для вашего проекта.</p>
+                </li>
+                <li>
+                    <h4 data-key="dataOptimTitle">Оптимизация работы с данными</h4>
+                    <p data-key="dataOptimDesc">Консультации по организации хранения, обработки и резервного копирования данных для обеспечения их безопасности и доступности.</p>
+                </li>
+                <li>
+                    <h4 data-key="webAppsTitle">Веб-приложения и порталы</h4>
+                    <p data-key="webAppsDesc">Общие консультации по размещению и поддержке веб-приложений и корпоративных порталов.</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="service-category">
+            <h3 data-key="kved9609Title">Индивидуальные консультации и Крипто-услуги (КВЭД 96.09)</h3>
+            <ul class="service-list">
+                <li>
+                    <h4 data-key="cryptoExchangeRegTitle">Помощь в регистрации на криптобиржах</h4>
+                    <p data-key="cryptoExchangeRegDesc">Подробные пошаговые инструкции по созданию и верификации аккаунтов на различных криптовалютных биржах (Binance, Bybit, Kraken и др.).</p>
+                </li>
+                <li>
+                    <h4 data-key="p2pConsultTitle">Консультации по P2P-обмену</h4>
+                    <p data-key="p2pConsultDesc">Разъяснение принципов безопасного P2P-обмена, выбор надежных платформ и эффективных стратегий.</p>
+                </li>
+                <li>
+                    <h4 data-key="cryptoBasicsTitle">Общие вопросы по криптовалютам</h4>
+                    <p data-key="cryptoBasicsDesc">Разъяснение основ блокчейна, выбора кошельков, рисков и возможностей в мире цифровых активов.</p>
+                </li>
+                <li>
+                    <h4 data-key="cryptoTaxTitle">Налогообложение крипто-активов для ФОП</h4>
+                    <p data-key="cryptoTaxDesc">Общие информационные рекомендации по возможным вариантам декларирования и уплаты налогов на доходы от криптовалют для ФОП в Украине. *Не является юридической или бухгалтерской консультацией, только информационный характер.*</p>
+                    </li>
+                <li>
+                    <h4 data-key="antiFraudTitle">Антифрод-стратегии в криптосфере</h4>
+                    <p data-key="antiFraudDesc">Рекомендации по защите от мошенничества и обеспечению максимальной безопасности ваших крипто-активов.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </section>
+
+  <section id="why-choose-us" class="section benefits-section">
+    <div class="container">
+        <h2 data-key="whyChooseUsHeading">Почему нас выбирают?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <h3 data-key="fopExpertiseTitle">Экспертиза ФОП</h3>
+                <p data-key="fopExpertiseDesc">Глубокое понимание особенностей ведения бизнеса как ФОП в Украине и всех нюансов законодательства.</p>
+            </div>
+            <div class="benefit-item">
+                <h3 data-key="individualApproachTitle">Индивидуальный подход</h3>
+                <p data-key="individualApproachDesc">Разработка решений, адаптированных под уникальные потребности и цели каждого клиента.</p>
+            </div>
+            <div class="benefit-item">
+                <h3 data-key="confidentialityTitle">Строгая конфиденциальность</h3>
+                <p data-key="confidentialityDesc">Гарантия полной конфиденциальности всех данных и обращений.</p>
+            </div>
+            <div class="benefit-item">
+                <h3 data-key="upToDateInfoTitle">Актуальность информации</h3>
+                <p data-key="upToDateInfoDesc">Предоставление самой свежей и релевантной информации, особенно в быстро меняющемся мире IT и криптовалют.</p>
+            </div>
+            <div class="benefit-item">
+                <h3 data-key="comprehensiveServiceTitle">Комплексный сервис</h3>
+                <p data-key="comprehensiveServiceDesc">Способность охватить широкий спектр вопросов: от регистрации ФОП до специфических ниш, связанных с криптовалютами.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section faq-section">
+    <div class="container">
+        <h2 data-key="faqHeading">Часто задаваемые вопросы (FAQ)</h2>
+        <div class="faq-items">
+            <details class="faq-item">
+                <summary class="faq-question" data-key="faqQ1">Какие документы нужны для регистрации ФОП с указанными КВЭДами?</summary>
+                <div class="faq-answer" data-key="faqA1">
+                    <p>Для регистрации ФОП обычно требуется паспорт, ИНН (идентификационный код) и заявление на регистрацию. Наши консультанты помогут вам правильно заполнить документы и выбрать необходимые КВЭДы.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question" data-key="faqQ2">Какие налоги платит ФОП по этим КВЭДам?</summary>
+                <div class="faq-answer" data-key="faqA2">
+                    <p>Налогообложение ФОП зависит от выбранной системы налогообложения (например, единый налог). Мы предоставим вам информационные материалы и общие рекомендации по налогообложению для КВЭД 62.02, 63.99, 63.11 и 96.09.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question" data-key="faqQ3">Может ли ФОП легально работать с криптовалютами в Украине?</summary>
+                <div class="faq-answer" data-key="faqA3">
+                    <p>Да, украинское законодательство регулирует сферу виртуальных активов. Мы предоставляем информационные консультации по возможностям легальной работы с криптовалютами для ФОП, основываясь на действующем законодательстве и разъяснениях госорганов.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question" data-key="faqQ4">Как происходит оплата ваших услуг?</summary>
+                <div class="faq-answer" data-key="faqA4">
+                    <p>Оплата наших услуг осуществляется по предварительной договоренности, удобным для вас способом. Детали обсуждаются при оформлении заявки на консультацию.</p>
+                </div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question" data-key="faqQ5">Как долго длится консультация?</summary>
+                <div class="faq-answer" data-key="faqA5">
+                    <p>Длительность консультации зависит от сложности вопроса и объема необходимой информации. Обычно индивидуальные сессии длятся от 30 минут до 1 часа, но могут быть продлены по вашему запросу.</p>
+                </div>
+            </details>
+        </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section testimonials-section">
+    <div class="container">
+        <h2 data-key="testimonialsHeading">Отзывы клиентов</h2>
+        <div class="testimonial-cards-wrapper">
+            <div class="testimonial-card">
+                <p data-key="testimonial1Text">"Очень помогли с регистрацией ФОП и выбором КВЭДов. Профессиональный подход и четкие инструкции!"</p>
+                <cite data-key="testimonial1Author">— Анна С., IT-фрилансер</cite>
+            </div>
+            <div class="testimonial-card">
+                <p data-key="testimonial2Text">"Благодаря консультации по криптовалютам смог разобраться в нюансах P2P обмена и налогообложения. Рекомендую!"</p>
+                <cite data-key="testimonial2Author">— Олег К., крипто-энтузиаст</cite>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="form" class="section">
+    <h2 data-key="formHeading">Оставить Заявку</h2>
     <div class="form-container">
       <form>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required><label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
+        <label for="name" data-key="formLabelName">Имя</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email" data-key="formLabelEmail">Email</label>
+        <input type="email" id="email" name="email" required>
 
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
+        <label for="message" data-key="formLabelMessage">Сообщение</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
 
-    <button type="submit">Send Request</button>
-  </form>
-</div>
+        <button type="submit" data-key="formButtonSend">Отправить Заявку</button>
+      </form>
+    </div>
+  </section>
 
-  </section>  <section id="contacts" class="section contacts">
-    <h2>Contacts</h2>
+  <section id="contacts" class="section contacts">
+    <h2 data-key="contactsHeading">Контакты</h2>
     <button class="contact-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M9.993 17.592l-1.265 4.181c.181.007.258-.077.355-.169l3.389-3.256 4.452 3.261c.816.451 1.393.213 1.601-.759l2.905-13.684c.267-1.196-.456-1.668-1.244-1.383l-16.934 6.53c-1.157.453-1.144 1.1-.197 1.388l4.339 1.354 10.066-6.334c.474-.29.908-.129.552.161l-8.147 7.591z"/></svg> @decoy_exchange</button>
-<button class="contact-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 2.163c-5.486 0-9.927 4.44-9.927 9.927 0 4.384 2.841 8.107 6.759 9.453.494.09.675-.215.675-.477 0-.235-.009-.859-.014-1.685-2.751.598-3.33-1.325-3.33-1.325-.449-1.141-1.096-1.445-1.096-1.445-.896-.613.068-.601.068-.601 1 .071 1.527 1.026 1.527 1.026.88 1.506 2.309 1.07 2.872.819.089-.638.344-1.07.626-1.316-2.195-.25-4.505-1.097-4.505-4.883 0-1.079.391-1.962 1.029-2.653-.104-.253-.447-1.27.098-2.648 0 0 .84-.27 2.75 1.026a9.551 9.551 0 0 1 2.5-.336 9.53 9.53 0 0 1 2.5.336c1.91-1.296 2.749-1.026 2.749-1.026.546 1.378.202 2.395.099 2.648.639.691 1.028 1.574 1.028 2.653 0 3.797-2.313 4.63-4.516 4.875.354.305.671.905.671 1.825 0 1.318-.012 2.383-.012 2.707 0 .264.18.57.681.474 3.916-1.348 6.756-5.07 6.756-9.452 0-5.487-4.441-9.927-9.927-9.927z"/></svg> @evgeshamoruk</button>
+    <button class="contact-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 2.163c-5.486 0-9.927 4.44-9.927 9.927 0 4.384 2.841 8.107 6.759 9.453.494.09.675-.215.675-.477 0-.235-.009-.859-.014-1.685-2.751.598-3.33-1.325-3.33-1.325-.449-1.141-1.096-1.445-1.096-1.445-.896-.613.068-.601.068-.601 1 .071 1.527 1.026 1.527 1.026.88 1.506 2.309 1.07 2.872.819.089-.638.344-1.07.626-1.316-2.195-.25-4.505-1.097-4.505-4.883 0-1.079.391-1.962 1.029-2.653-.104-.253-.447-1.27.098-2.648 0 0 .84-.27 2.75 1.026a9.551 9.551 0 0 1 2.5-.336 9.53 9.53 0 0 1 2.5.336c1.91-1.296 2.749-1.026 2.749-1.026.546 1.378.202 2.395.099 2.648.639.691 1.028 1.574 1.028 2.653 0 3.797-2.313 4.63-4.516 4.875.354.305.671.905.671 1.825 0 1.318-.012 2.383-.012 2.707 0 .264.18.57.681.474 3.916-1.348 6.756-5.07 6.756-9.452 0-5.487-4.441-9.927-9.927-9.927z"/></svg> @evgeshamoruk</button>
     <button class="contact-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 12.713l-11.99-7.213 11.99 11.287 11.99-11.287z"/><path d="M12 13.587l-11.99-11.287v17.7h23.979v-17.7z"/></svg> decoy1997@gmail.com</button>
-  </section>  <footer>
-    <p>&copy; 2025 Yevhenii Manchuk. All rights reserved.</p>
-  </footer>  <script>
+  </section>
+  <footer>
+    <p data-key="footerText">&copy; 2025 Yevhenii Manchuk. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Объект с переводами для каждого языка
+    const translations = {
+      en: {
+        headerTitle: "Freelance Services",
+        navHome: "Home",
+        navServices: "Services",
+        navRequestForm: "Request Form",
+        navContacts: "Contacts",
+        welcomeHeading: "Expert Consulting for FOP in IT & Digital Services",
+        welcomeSubtitle: "Your reliable partner for successful business and cryptocurrency operations in Ukraine",
+        welcomeText: "We offer comprehensive consulting services for individual entrepreneurs (FOP) in Ukraine, specializing in IT consulting (KVED 62.02), information services (KVED 63.99, 63.11), and unique individual consultations, including those related to cryptocurrencies (KVED 96.09). We'll help you navigate complex issues and choose the optimal path for your business.",
+        welcomeCta: "Submit a Request for Consultation",
+        servicesHeading: "Our Services",
+        kved6202Title: "IT Consulting (KVED 62.02)",
+        itInfraTitle: "IT Infrastructure Optimization for FOP",
+        itInfraDesc: "Assistance in selecting and configuring software, cloud solutions, and communication systems for effective business operations.",
+        digitalToolsTitle: "Digital Tool Implementation",
+        digitalToolsDesc: "Consulting on the use of CRM systems, task trackers, online accounting, and other services for business process automation.",
+        trainingSupportTitle: "Training and Support",
+        trainingSupportDesc: "Assistance in mastering new software products and technologies necessary for your work.",
+        kved6399Title: "Information and Analytical Services (KVED 63.99)",
+        infoAnalysisTitle: "Specialized Information Search and Analysis",
+        infoAnalysisDesc: "Providing up-to-date data upon client request: market data, legal aspects, trends in your niche.",
+        mediaMonitoringTitle: "News and Media Monitoring",
+        mediaMonitoringDesc: "Tracking current changes in legislation, financial markets, and specific industries relevant to your FOP.",
+        legalConsultTitle: "General Legal Consulting",
+        legalConsultDesc: "Informational support on legal and tax matters related to the IT sphere and FOP activities in Ukraine.",
+        kved6311Title: "Data Processing and Web Hosting Services (KVED 63.11)",
+        hostingConsultTitle: "Hosting and Cloud Solutions Consulting",
+        hostingConsultDesc: "Assistance in choosing reliable hosting providers, server setup, and using cloud data storage for your project.",
+        dataOptimTitle: "Data Operations Optimization",
+        dataOptimDesc: "Consulting on organizing data storage, processing, and backup to ensure security and accessibility.",
+        webAppsTitle: "Web Applications and Portals",
+        webAppsDesc: "General consulting on hosting and supporting web applications and corporate portals.",
+        kved9609Title: "Individual Consulting and Crypto Services (KVED 96.09)",
+        cryptoExchangeRegTitle: "Assistance with Crypto Exchange Registration",
+        cryptoExchangeRegDesc: "Detailed step-by-step instructions for creating and verifying accounts on various cryptocurrency exchanges (Binance, Bybit, Kraken, etc.).",
+        p2pConsultTitle: "P2P Exchange Consulting",
+        p2pConsultDesc: "Explaining secure P2P exchange principles, choosing reliable platforms, and effective strategies.",
+        cryptoBasicsTitle: "General Cryptocurrency Questions",
+        cryptoBasicsDesc: "Clarifying blockchain basics, wallet selection, risks, and opportunities in the digital asset world.",
+        cryptoTaxTitle: "Cryptocurrency Taxation for FOP",
+        cryptoTaxDesc: "General informational recommendations on possible options for declaring and paying taxes on cryptocurrency income for FOP in Ukraine. *Not legal or accounting advice, for informational purposes only.*",
+        antiFraudTitle: "Anti-Fraud Strategies in Crypto",
+        antiFraudDesc: "Recommendations for protecting against fraud and ensuring maximum security of your crypto assets.",
+        whyChooseUsHeading: "Why Choose Us?",
+        fopExpertiseTitle: "FOP Expertise",
+        fopExpertiseDesc: "Deep understanding of FOP business specifics in Ukraine and all legislative nuances.",
+        individualApproachTitle: "Individual Approach",
+        individualApproachDesc: "Development of solutions tailored to the unique needs and goals of each client.",
+        confidentialityTitle: "Strict Confidentiality",
+        confidentialityDesc: "Guarantee of full confidentiality of all data and inquiries.",
+        upToDateInfoTitle: "Up-to-date Information",
+        upToDateInfoDesc: "Providing the latest and most relevant information, especially in the fast-changing world of IT and cryptocurrencies.",
+        comprehensiveServiceTitle: "Comprehensive Service",
+        comprehensiveServiceDesc: "Ability to cover a wide range of issues: from FOP registration to specific niches related to cryptocurrencies.",
+        faqHeading: "Frequently Asked Questions (FAQ)",
+        faqQ1: "What documents are needed to register FOP with the specified KVEDs?",
+        faqA1: "To register as an FOP, you typically need your passport, TIN (tax identification number), and a registration application. Our consultants will help you correctly fill out the documents and choose the necessary KVEDs.",
+        faqQ2: "What taxes does FOP pay for these KVEDs?",
+        faqA2: "FOP taxation depends on the chosen taxation system (e.g., single tax). We will provide you with informational materials and general recommendations on taxation for KVEDs 62.02, 63.99, 63.11, and 96.09.",
+        faqQ3: "Can an FOP legally work with cryptocurrencies in Ukraine?",
+        faqA3: "Yes, Ukrainian legislation regulates the sphere of virtual assets. We provide informational consultations on the possibilities of legal work with cryptocurrencies for FOP, based on current legislation and government clarifications.",
+        faqQ4: "How is payment for your services made?",
+        faqA4: "Payment for our services is made by prior arrangement, using a method convenient for you. Details are discussed when submitting a consultation request.",
+        faqQ5: "How long does a consultation last?",
+        faqA5: "The duration of a consultation depends on the complexity of the issue and the amount of necessary information. Typically, individual sessions last from 30 minutes to 1 hour, but can be extended upon your request.",
+        testimonialsHeading: "Client Testimonials",
+        testimonial1Text: "\"They helped a lot with FOP registration and KVED selection. Professional approach and clear instructions!\"",
+        testimonial1Author: "— Anna S., IT Freelancer",
+        testimonial2Text: "\"Thanks to cryptocurrency consulting, I was able to understand the nuances of P2P exchange and taxation. Highly recommend!\"",
+        testimonial2Author: "— Oleg K., Crypto Enthusiast",
+        formHeading: "Submit a Request",
+        formLabelName: "Name",
+        formLabelEmail: "Email",
+        formLabelMessage: "Message",
+        formButtonSend: "Send Request",
+        contactsHeading: "Contacts",
+        footerText: "&copy; 2025 Yevhenii Manchuk. All rights reserved."
+      },
+      ru: {
+        headerTitle: "Услуги Фриланса",
+        navHome: "Главная",
+        navServices: "Услуги",
+        navRequestForm: "Оставить Заявку",
+        navContacts: "Контакты",
+        welcomeHeading: "Экспертные консультации для ФОП в сфере IT и цифровых услуг",
+        welcomeSubtitle: "Ваш надежный партнер для успешного ведения бизнеса и работы с криптовалютами в Украине",
+        welcomeText: "Предлагаем комплексные консультационные услуги для физических лиц-предпринимателей (ФОП) в Украине, специализируясь на вопросах информатизации (КВЭД 62.02), предоставлении информационных услуг (КВЭД 63.99, 63.11) и уникальных индивидуальных консультациях, в том числе по криптовалютам (КВЭД 96.09).
+          Мы поможем вам разобраться в сложных вопросах и выбрать оптимальный путь для вашего бизнеса.",
+        welcomeCta: "Оставить заявку на консультацию",
+        servicesHeading: "Наши Услуги",
+        kved6202Title: "Консультации по информатизации (КВЭД 62.02)",
+        itInfraTitle: "Оптимизация IT-инфраструктуры для ФОП",
+        itInfraDesc: "Помощь в выборе и настройке программного обеспечения, облачных решений, систем коммуникации для эффективного ведения предпринимательской деятельности.",
+        digitalToolsTitle: "Внедрение цифровых инструментов",
+        digitalToolsDesc: "Консультации по использованию CRM-систем, таск-трекеров, бухгалтерии онлайн и других сервисов для автоматизации бизнес-процессов.",
+        trainingSupportTitle: "Обучение и поддержка",
+        trainingSupportDesc: "Помощь в освоении новых программных продуктов и технологий, необходимых для вашей работы.",
+        kved6399Title: "Информационные и аналитические услуги (КВЭД 63.99)",
+        infoAnalysisTitle: "Поиск и анализ специализированной информации",
+        infoAnalysisDesc: "Предоставление актуальных данных по запросу клиента: рыночные данные, юридические аспекты, тренды в вашей нише.",
+        mediaMonitoringTitle: "Мониторинг новостей и медиа",
+        mediaMonitoringDesc: "Отслеживание актуальных изменений в законодательстве, финансовых рынках и специфических отраслях, важных для вашего ФОП.",
+        legalConsultTitle: "Общие консультации по законодательству",
+        legalConsultDesc: "Информационная поддержка по правовым и налоговым вопросам, касающимся IT-сферы и деятельности ФОП в Украине.",
+        kved6311Title: "Услуги по обработке данных и веб-хостингу (КВЭД 63.11)",
+        hostingConsultTitle: "Консультации по хостингу и облачным решениям",
+        hostingConsultDesc: "Помощь в выборе надежных хостинг-провайдеров, настройке серверов, использовании облачных хранилищ данных для вашего проекта.",
+        dataOptimTitle: "Оптимизация работы с данными",
+        dataOptimDesc: "Консультации по организации хранения, обработки и резервного копирования данных для обеспечения их безопасности и доступности.",
+        webAppsTitle: "Веб-приложения и порталы",
+        webAppsDesc: "Общие консультации по размещению и поддержке веб-приложений и корпоративных порталов.",
+        kved9609Title: "Индивидуальные консультации и Крипто-услуги (КВЭД 96.09)",
+        cryptoExchangeRegTitle: "Помощь в регистрации на криптобиржах",
+        cryptoExchangeRegDesc: "Подробные пошаговые инструкции по созданию и верификации аккаунтов на различных криптовалютных биржах (Binance, Bybit, Kraken и др.).",
+        p2pConsultTitle: "Консультации по P2P-обмену",
+        p2pConsultDesc: "Разъяснение принципов безопасного P2P-обмена, выбор надежных платформ и эффективных стратегий.",
+        cryptoBasicsTitle: "Общие вопросы по криптовалютам",
+        cryptoBasicsDesc: "Разъяснение основ блокчейна, выбора кошельков, рисков и возможностей в мире цифровых активов.",
+        cryptoTaxTitle: "Налогообложение крипто-активов для ФОП",
+        cryptoTaxDesc: "Общие информационные рекомендации по возможным вариантам декларирования и уплаты налогов на доходы от криптовалют для ФОП в Украине. *Не является юридической или бухгалтерской консультацией, только информационный характер.*",
+        antiFraudTitle: "Антифрод-стратегии в криптосфере",
+        antiFraudDesc: "Рекомендации по защите от мошенничества и обеспечению максимальной безопасности ваших крипто-активов.",
+        whyChooseUsHeading: "Почему нас выбирают?",
+        fopExpertiseTitle: "Экспертиза ФОП",
+        fopExpertiseDesc: "Глубокое понимание особенностей ведения бизнеса как ФОП в Украине и всех нюансов законодательства.",
+        individualApproachTitle: "Индивидуальный подход",
+        individualApproachDesc: "Разработка решений, адаптированных под уникальные потребности и цели каждого клиента.",
+      confidentialityTitle: "Строгая конфиденциальность",
+        confidentialityDesc: "Гарантия полной конфиденциальности всех данных и обращений.",
+        upToDateInfoTitle: "Актуальность информации",
+        upToDateInfoDesc: "Предоставление самой свежей и релевантной информации, особенно в быстро меняющемся мире IT и криптовалют.",
+        comprehensiveServiceTitle: "Комплексный сервис",
+        comprehensiveServiceDesc: "Способность охватить широкий спектр вопросов: от регистрации ФОП до специфических ниш, связанных с криптовалютами.",
+        faqHeading: "Часто задаваемые вопросы (FAQ)",
+        faqQ1: "Какие документы нужны для регистрации ФОП с указанными КВЭДами?",
+        faqA1: "Для регистрации ФОП обычно требуется паспорт, ИНН (идентификационный код) и заявление на регистрацию. Наши консультанты помогут вам правильно заполнить документы и выбрать необходимые КВЭДы.",
+        faqQ2: "Какие налоги платит ФОП по этим КВЭДам?",
+        faqA2: "Налогообложение ФОП зависит от выбранной системы налогообложения (например, единый налог). Мы предоставим вам информационные материалы и общие рекомендации по налогообложению для КВЭД 62.02, 63.99, 63.11 и 96.09.",
+        faqQ3: "Может ли ФОП легально работать с криптовалютами в Украине?",
+        faqA3: "Да, украинское законодательство регулирует сферу виртуальных активов. Мы предоставляем информационные консультации по возможностям легальной работы с криптовалютами для ФОП, основываясь на действующем законодательстве и разъяснениях госорганов.",
+        faqQ4: "Как происходит оплата ваших услуг?",
+        faqA4: "Оплата наших услуг осуществляется по предварительной договоренности, удобным для вас способом. Детали обсуждаются при оформлении заявки на консультацию.",
+        faqQ5: "Как долго длится консультация?",
+        faqA5: "Длительность консультации зависит от сложности вопроса и объема необходимой информации. Обычно индивидуальные сессии длятся от 30 минут до 1 часа, но могут быть продлены по вашему запросу.",
+        testimonialsHeading: "Отзывы клиентов",
+        testimonial1Text: "\"Очень помогли с регистрацией ФОП и выбором КВЭДов. Профессиональный подход и четкие инструкции!\"",
+        testimonial1Author: "— Анна С., IT-фрилансер",
+        testimonial2Text: "\"Благодаря консультации по криптовалютам смог разобраться в нюансах P2P обмена и налогообложения. Рекомендую!\"",
+        testimonial2Author: "— Олег К., крипто-энтузиаст",
+        formHeading: "Оставить Заявку",
+        formLabelName: "Имя",
+        formLabelEmail: "Email",
+        formLabelMessage: "Сообщение",
+        formButtonSend: "Отправить Заявку",
+        contactsHeading: "Контакты",
+        footerText: "&copy; 2025 Евгений Манчук. Все права защищены."
+      },
+      uk: {
+        headerTitle: "Фріланс Послуги",
+        navHome: "Головна",
+        navServices: "Послуги",
+        navRequestForm: "Залишити Заявку",
+        navContacts: "Контакти",
+        welcomeHeading: "Експертні консультації для ФОП у сфері IT та цифрових послуг",
+        welcomeSubtitle: "Ваш надійний партнер для успішного ведення бізнесу та роботи з криптовалютами в Україні",
+        welcomeText: "Пропонуємо комплексні консультаційні послуги для фізичних осіб-підприємців (ФОП) в Україні, спеціалізуючись на питаннях інформатизації (КВЕД 62.02), наданні інформаційних послуг (КВЕД 63.99, 63.11) та унікальних індивідуальних консультаціях, у тому числі щодо криптовалют (КВЕД 96.09). Ми допоможемо вам розібратися у складних питаннях та обрати оптимальний шлях для вашого бізнесу.",
+        welcomeCta: "Залишити заявку на консультацію",
+        servicesHeading: "Наші Послуги",
+        kved6202Title: "Консультації з питань інформатизації (КВЕД 62.02)",
+        itInfraTitle: "Оптимізація IT-інфраструктури для ФОП",
+        itInfraDesc: "Допомога у виборі та налаштуванні програмного забезпечення, хмарних рішень, систем комунікації для ефективного ведення підприємницької діяльності.",
+          digitalToolsTitle: "Впровадження цифрових інструментів",
+        digitalToolsDesc: "Консультації щодо використання CRM-систем, таск-трекерів, онлайн-бухгалтерії та інших сервісів для автоматизації бізнес-процесів.",
+        trainingSupportTitle: "Навчання та підтримка",
+        trainingSupportDesc: "Допомога в освоєнні нових програмних продуктів та технологій, необхідних для вашої роботи.",
+        kved6399Title: "Інформаційні та аналітичні послуги (КВЕД 63.99)",
+        infoAnalysisTitle: "Пошук та аналіз спеціалізованої інформації",
+        infoAnalysisDesc: "Надання актуальних даних на запит клієнта: ринкові дані, юридичні аспекти, тренди у вашій ніші.",
+        mediaMonitoringTitle: "Моніторинг новин та медіа",
+        mediaMonitoringDesc: "Відстеження актуальних змін у законодавстві, фінансових ринках та специфічних галузях, важливих для вашого ФОП.",
+        legalConsultTitle: "Загальні консультації з законодавства",
+        legalConsultDesc: "Інформаційна підтримка з правових та податкових питань, що стосуються IT-сфери та діяльності ФОП в Україні.",
+        kved6311Title: "Послуги з обробки даних та веб-хостингу (КВЕД 63.11)",
+        hostingConsultTitle: "Консультації щодо хостингу та хмарних рішень",
+        hostingConsultDesc: "Допомога у виборі надійних хостинг-провайдерів, налаштуванні серверів, використанні хмарних сховищ даних для вашого проєкту.",
+        dataOptimTitle: "Оптимізація роботи з даними",
+        dataOptimDesc: "Консультації щодо організації зберігання, обробки та резервного копіювання даних для забезпечення їх безпеки та доступності.",
+        webAppsTitle: "Веб-додатки та портали",
+        webAppsDesc: "Загальні консультації щодо розміщення та підтримки веб-додатків та корпоративних порталів.",
+        kved9609Title: "Індивідуальні консультації та Крипто-послуги (КВЕД 96.09)",
+        cryptoExchangeRegTitle: "Допомога у реєстрації на криптобіржах",
+        cryptoExchangeRegDesc: "Детальні покрокові інструкції щодо створення та верифікації облікових записів на різних криптовалютних біржах (Binance, Bybit, Kraken тощо).",
+        p2pConsultTitle: "Консультації з P2P-обміну",
+        p2pConsultDesc: "Роз'яснення принципів безпечного P2P-обміну, вибір надійних платформ та ефективних стратегій.",
+        cryptoBasicsTitle: "Загальні питання щодо криптовалют",
+        cryptoBasicsDesc: "Роз'яснення основ блокчейна, вибору гаманців, ризиків та можливостей у світі цифрових активів.",
+        cryptoTaxTitle: "Оподаткування крипто-активів для ФОП",
+        cryptoTaxDesc: "Загальні інформаційні рекомендації щодо можливих варіантів декларування та сплати податків на доходи від криптовалют для ФОП в Україні. *Не є юридичною або бухгалтерською консультацією, лише інформаційний характер.*",
+        antiFraudTitle: "Антифрод-стратегії у криптосфері",
+        antiFraudDesc: "Рекомендації щодо захисту від шахрайства та забезпечення максимальної безпеки ваших крипто-активів.",
+        whyChooseUsHeading: "Чому нас обирають?",
+        fopExpertiseTitle: "Експертиза ФОП",
+        fopExpertiseDesc: "Глибоке розуміння особливостей ведення бізнесу як ФОП в Україні та всіх нюансів законодавства.",
+        individualApproachTitle: "Індивідуальний підхід",
+        individualApproachDesc: "Розробка рішень, адаптованих під унікальні потреби та цілі кожного клієнта.",
+        confidentialityTitle: "Сувора конфіденційність",
+        confidentialityDesc: "Гарантія повної конфіденційності всіх даних та звернень.",
+        upToDateInfoTitle: "Актуальність інформації",
+        upToDateInfoDesc: "Надання найсвіжішої та найбільш релевантної інформації, особливо у швидкозмінному світі IT та криптовалют.",
+        comprehensiveServiceTitle: "Комплексний сервіс",
+        comprehensiveServiceDesc: "Здатність охопити широкий спектр питань: від реєстрації ФОП до специфічних ніш, пов'язаних з криптовалютами.",
+          faqHeading: "Часті питання (FAQ)",
+        faqQ1: "Які документи потрібні для реєстрації ФОП із зазначеними КВЕДами?",
+        faqA1: "Для реєстрації ФОП зазвичай потрібен паспорт, ІПН (ідентифікаційний код) та заява на реєстрацію. Наші консультанти допоможуть вам правильно заповнити документи та обрати необхідні КВЕДи.",
+        faqQ2: "Які податки сплачує ФОП за цими КВЕДами?",
+        faqA2: "Оподаткування ФОП залежить від обраної системи оподаткування (наприклад, єдиний податок). Ми надамо вам інформаційні матеріали та загальні рекомендації щодо оподаткування для КВЕД 62.02, 63.99, 63.11 та 96.09.",
+        faqQ3: "Чи може ФОП легально працювати з криптовалютами в Україні?",
+        faqA3: "Так, українське законодавство регулює сферу віртуальних активів. Ми надаємо інформаційні консультації щодо можливостей легальної роботи з криптовалютами для ФОП, базуючись на чинному законодавстві та роз'ясненнях держорганів.",
+        faqQ4: "Як відбувається оплата ваших послуг?",
+        faqA4: "Оплата наших послуг здійснюється за попередньою домовленістю, зручним для вас способом. Деталі обговорюються при оформленні заявки на консультацію.",
+        faqQ5: "Як довго триває консультація?",
+        faqA5: "Тривалість консультації залежить від складності питання та обсягу необхідної інформації. Зазвичай індивідуальні сесії тривають від 30 хвилин до 1 години, але можуть бути продовжені за вашим запитом.",
+        testimonialsHeading: "Відгуки клієнтів",
+        testimonial1Text: "\"Дуже допомогли з реєстрацією ФОП та вибором КВЕДів. Професійний підхід та чіткі інструкції!\"",
+        testimonial1Author: "— Анна С., IT-фрілансер",
+        testimonial2Text: "\"Завдяки консультації з криптовалют зміг розібратися у нюансах P2P обміну та оподаткування. Рекомендую!\"",
+        testimonial2Author: "— Олег К., крипто-ентузіаст",
+        formHeading: "Залишити Заявку",
+        formLabelName: "Ім'я",
+        formLabelEmail: "Email",
+        formLabelMessage: "Повідомлення",
+        formButtonSend: "Надіслати Заявку",
+        contactsHeading: "Контакти",
+        footerText: "&copy; 2025 Євгеній Манчук. Всі права захищені."
+      }
+    };
+
+    // Функция для изменения языка
     function changeLanguage(lang) {
-      alert('Language switching is not yet implemented. Selected: ' + lang);
+      // Сохраняем выбранный язык в localStorage
+      localStorage.setItem('selectedLanguage', lang);
+      
+      // Обновляем атрибут lang у html
+      document.documentElement.lang = lang;
+
+      // Применяем переводы
+      for (const key in translations[lang]) {
+        const element = document.querySelector([data-key="${key}"]);
+        if (element) {
+          element.innerHTML = translations[lang][key];
+        }
+      }
     }
-  </script></body>
+
+    // При загрузке страницы устанавливаем язык из localStorage или по умолчанию (русский)
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('selectedLanguage') || 'ru'; // По умолчанию русский
+      const langSelector = document.querySelector('.language-selector select');
+      
+      // Устанавливаем выбранное значение в селекторе
+      if (langSelector) {
+        langSelector.value = savedLang;
+      }
+      
+      // Применяем язык
+      changeLanguage(savedLang);
+    });
+  </script>
+</body>
 </html>
