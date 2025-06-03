@@ -2,121 +2,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Decoy Exchange</title>
+  <title>Freelance Services</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Russo One', sans-serif;
-      background: linear-gradient(135deg, #0d0d0d, #1c0f00);
-      color: #ff9900;
+    html {
+      scroll-behavior: smooth;
     }
-    header, section {
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+      color: #333;
+    }
+    header, footer {
+      background-color: #ff6600;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+    }
+    .section {
       padding: 50px 20px;
       text-align: center;
     }
-    header img {
-      max-width: 200px;
+    .contacts svg {
+      margin-right: 8px;
     }
-    h1 {
-      font-size: 3rem;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #0d0d0d;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 15px 0;
-      z-index: 999;
-    }
-    nav a {
-      color: #ff9900;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .btn {
-      background-color: #ff9900;
-      color: #0d0d0d;
+    .contact-button {
+      background-color: #ff6600;
+      color: white;
       padding: 10px 20px;
-      margin: 10px;
+      margin: 5px;
       border: none;
-      cursor: pointer;
-      font-weight: bold;
       border-radius: 5px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-    .icon-link {
-      display: flex;
+      cursor: pointer;
+      font-size: 16px;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
     }
-    .icon-link img {
-      width: 20px;
-      height: 20px;
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-container label {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .form-container input, .form-container textarea {
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .form-container button {
+      margin-top: 20px;
+      background-color: #ff6600;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .language-selector {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#benefits">Benefits</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </nav>  <header>
-    <img src="logo.png" alt="Decoy Exchange Logo">
-    <h1>Decoy Exchange</h1>
-    <p>Your gateway to safe and reliable crypto services</p>
-  </header>  <section id="about">
-    <h2>About Us</h2>
-    <p>We help users safely work with cryptocurrency platforms, from account registration to avoiding scams and mastering P2P.</p>
-  </section>  <section id="services">
-    <h2>Services</h2>
+  <header>
+    <h1>Freelance Services</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#form">Request Form</a>
+      <a href="#contacts">Contacts</a>
+    </nav>
+    <div class="language-selector">
+      <select onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="uk">Українська</option>
+      </select>
+    </div>
+  </header>  <section id="home" class="section">
+    <h2>Welcome to our freelance consulting</h2>
+    <p>Professional help with crypto platforms, transfers, accounts, and anti-fraud strategies.</p>
+  </section>  <section id="services" class="section">
+    <h2>Our Services</h2>
     <ul>
-      <li>Consulting on crypto exchanges (Binance, Bybit, OKX, etc.)</li>
-      <li>Account setup assistance</li>
-      <li>Secure P2P strategies</li>
-      <li>Transaction and transfer guidance</li>
-      <li>Fraud prevention and safety consulting</li>
+      <li>Account registration & verification</li>
+      <li>Crypto exchange & P2P consulting</li>
+      <li>Fraud protection guidance</li>
+      <li>Document assistance</li>
+      <li>Individual consulting sessions</li>
     </ul>
-  </section>  <section id="benefits">
-    <h2>Why Choose Us</h2>
-    <ul>
-      <li>Fast and easy onboarding</li>
-      <li>5+ years experience</li>
-      <li>Full privacy and confidentiality</li>
-      <li>24/7 personalized support</li>
-    </ul>
-  </section>  <section id="faq">
-    <h2>FAQ</h2>
-    <p><strong>Q:</strong> How do consultations happen?<br><strong>A:</strong> Via Telegram or email, typically within 24h of request.</p>
-    <p><strong>Q:</strong> What data do I need to share?<br><strong>A:</strong> Only what's required for your chosen service, kept strictly confidential.</p>
-  </section>  <section id="contact">
-    <h2>Contact Us</h2>
-    <div class="icon-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon">
-      <a href="https://t.me/decoy_exchange">@decoy_exchange</a>
-    </div>
-    <div class="icon-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram Icon">
-      <a href="https://instagram.com/evgeshamoruk">@evgeshamoruk</a>
-    </div>
-    <div class="icon-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon">
-      <a href="mailto:decoy1997@gmail.com">decoy1997@gmail.com</a>
-    </div>
+  </section>  <section id="form" class="section">
+    <h2>Submit a Request</h2>
+    <div class="form-container">
+      <form>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required><label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Send Request</button>
+  </form>
+</div>
+
+  </section>  <section id="contacts" class="section contacts">
+    <h2>Contacts</h2>
+    <button class="contact-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M9.993 17.592l-1.265 4.181c.181.007.258-.077.355-.169l3.389-3.256 4.452 3.261c.816.451 1.393.213 1.601-.759l2.905-13.684c.267-1.196-.456-1.668-1.244-1.383l-16.934 6.53c-1.157.453-1.144 1.1-.197 1.388l4.339 1.354 10.066-6.334c.474-.29.908-.129.552.161l-8.147 7.591z"/></svg> @decoy_exchange</button>
+<button class="contact-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 2.163c-5.486 0-9.927 4.44-9.927 9.927 0 4.384 2.841 8.107 6.759 9.453.494.09.675-.215.675-.477 0-.235-.009-.859-.014-1.685-2.751.598-3.33-1.325-3.33-1.325-.449-1.141-1.096-1.445-1.096-1.445-.896-.613.068-.601.068-.601 1 .071 1.527 1.026 1.527 1.026.88 1.506 2.309 1.07 2.872.819.089-.638.344-1.07.626-1.316-2.195-.25-4.505-1.097-4.505-4.883 0-1.079.391-1.962 1.029-2.653-.104-.253-.447-1.27.098-2.648 0 0 .84-.27 2.75 1.026a9.551 9.551 0 0 1 2.5-.336 9.53 9.53 0 0 1 2.5.336c1.91-1.296 2.749-1.026 2.749-1.026.546 1.378.202 2.395.099 2.648.639.691 1.028 1.574 1.028 2.653 0 3.797-2.313 4.63-4.516 4.875.354.305.671.905.671 1.825 0 1.318-.012 2.383-.012 2.707 0 .264.18.57.681.474 3.916-1.348 6.756-5.07 6.756-9.452 0-5.487-4.441-9.927-9.927-9.927z"/></svg> @evgeshamoruk</button>
+    <button class="contact-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 12.713l-11.99-7.213 11.99 11.287 11.99-11.287z"/><path d="M12 13.587l-11.99-11.287v17.7h23.979v-17.7z"/></svg> decoy1997@gmail.com</button>
   </section>  <footer>
-    &copy; 2025 Decoy Exchange. All rights reserved.
-  </footer>
-</body>
+    <p>&copy; 2025 Yevhenii Manchuk. All rights reserved.</p>
+  </footer>  <script>
+    function changeLanguage(lang) {
+      alert('Language switching is not yet implemented. Selected: ' + lang);
+    }
+  </script></body>
 </html>
