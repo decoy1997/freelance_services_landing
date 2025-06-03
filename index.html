@@ -71,16 +71,34 @@
       border-radius: 4px;
       border: 1px solid #ccc;
     }
-    .form-container button {
+
+    /* Обновленные стили для кнопки "Отправить Заявку" в форме */
+    .form-container button[type="submit"] {
       margin-top: 20px;
-      background-color: #ff6600;
+      background-color: #ff6600; /* Основной цвет сайта */
       color: white;
-      padding: 12px;
-      font-size: 16px;
+      padding: 15px; /* Увеличенный padding для лучшей видимости и кликабельности */
+      font-size: 18px; /* Увеличенный размер шрифта */
+      font-weight: 700; /* Более жирный шрифт */
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
     }
+
+    .form-container button[type="submit"]:hover {
+      background-color: #e65c00; /* Чуть темнее при наведении */
+      transform: translateY(-2px); /* Легкий подъем */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Усиленная тень */
+    }
+
+    .form-container button[type="submit"]:active {
+      background-color: #cc5200; /* Еще темнее при клике */
+      transform: translateY(0); /* Возврат на место */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Меньшая тень */
+    }
+
     .language-selector {
       margin-top: 10px;
     }
@@ -136,6 +154,7 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       margin-top: 30px;
+      text-align: left;
     }
     .benefit-item {
       background-color: white;
@@ -252,6 +271,33 @@
       color: #ff6600; /* Цвет текста активной кнопки */
       border-color: white;
       font-weight: bold;
+    }
+
+    /* Стили для кнопки "Наверх" */
+    #scrollToTopBtn {
+        display: none; /* Скрыта по умолчанию */
+        position: fixed; /* Фиксированное позиционирование */
+        bottom: 30px; /* Отступ от низа */
+        right: 30px; /* Отступ справа */
+        z-index: 1000; /* Выше всех элементов */
+        border: none;
+        outline: none;
+        background-color: #333; /* Темный цвет, который хорошо смотрится на фоне */
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50%; /* Круглая форма */
+        font-size: 24px; /* Размер стрелки */
+        line-height: 1;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объема */
+        transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.2s ease;
+        opacity: 0.85; /* Немного прозрачности */
+    }
+
+    #scrollToTopBtn:hover {
+        background-color: #000; /* Темнее при наведении */
+        opacity: 1;
+        transform: translateY(-2px); /* Легкий подъем */
     }
   </style>
 </head>
@@ -483,8 +529,10 @@
     <p data-key="footerText">&copy; 2025 Yevhenii Manchuk. All rights reserved.</p>
   </footer>
 
+  <button id="scrollToTopBtn" title="Наверх">&#8593;</button>
+
   <script>
-    // Объект с переводами для каждого языка
+    // Объект с переводами для каждого языка (остается без изменений)
     const translations = {
       en: {
         headerTitle: "Freelance Services",
@@ -669,7 +717,7 @@
         legalConsultDesc: "Інформаційна підтримка з правових та податкових питань, що стосуються IT-сфери та діяльності ФОП в Україні.",
         kved6311Title: "Послуги з обробки даних та веб-хостингу (КВЕД 63.11)",
         hostingConsultTitle: "Консультації щодо хостингу та хмарних рішень",
-        hostingConsultDesc: "Допомога у виборі надійних хостинг-провайдерів, налаштуванні серверів, використанні хмарних сховищ даних для вашого проєкту.",
+        hostingConsultDesc: "Допомога у виборі надійних хостинг-провайдерів, налаштуванні серверов, використанні хмарних сховищ даних для вашого проєкту.",
         dataOptimTitle: "Оптимізація роботи з даними",
         dataOptimDesc: "Консультації щодо організації зберігання, обробки та резервного копіювання даних для забезпечення їх безпеки та доступності.",
         webAppsTitle: "Веб-додатки та портали",
@@ -722,7 +770,7 @@
       }
     };
 
-    // Функция для изменения языка
+    // Функция для изменения языка (остается без изменений)
     function changeLanguage(lang) {
       console.log('Changing language to:', lang); // Для отладки
 
@@ -764,6 +812,27 @@
       
       // Применяем язык при загрузке
       changeLanguage(savedLang);
+
+      // --- JavaScript для кнопки "Наверх" ---
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+      const scrollThreshold = 400; // Порог прокрутки в пикселях, после которого кнопка появляется
+
+      // Показать/скрыть кнопку при прокрутке
+      window.onscroll = function() {
+          if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+              scrollToTopBtn.style.display = "block";
+          } else {
+              scrollToTopBtn.style.display = "none";
+          }
+      };
+
+      // Плавный скролл при клике
+      scrollToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+              top: 0,
+              behavior: "smooth" // Плавная прокрутка
+          });
+      });
     });
   </script>
 </body>
